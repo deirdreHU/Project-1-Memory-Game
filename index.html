@@ -11,8 +11,7 @@
     <link href="./cardstyle.css" rel="stylesheet" />
 </head>
 
-<body>
-    
+<body>   
     <hearder id="headerWrapper">
         <div id = "maintitle">
             <img src="./backgroundImages/Title.png">
@@ -25,7 +24,6 @@
                 <img src= "./Icons/Music.png" class="music"> 
             </button>
         </div>
-
     </hearder>
     
     <section class="wrapper">
@@ -33,9 +31,7 @@
             <p class="moves">Moves:</p>
             <p class="time">00:00:00</p>  
         </div>
-
         <div class="cards"> </div>
-       
     </section>
 
     <div id="overlay" class="showed">
@@ -50,7 +46,6 @@
                 <div class="card-title">
                     <h5>Settings</h5>
                 </div>
-
                 <div class="input-group mb-3">
                     <label class="input-group-text">Category</label>
                     <select class="form-select" id="categoryGroupSelect01">
@@ -59,7 +54,6 @@
                         <option value="Animal">Animal</option>
                     </select>
                 </div>
-
                 <div class="input-group mb-3">
                     <label class="input-group-text">Number of cards</label>
                     <select class="form-select" id="numOfCardGroupSelect01">
@@ -68,16 +62,13 @@
                         <option value="16">16</option>
                     </select>
                 </div>
-
-                <div>
-                    <a href="#" class="btn btn-primary">Confirm</a>
+                <div class="dialog-actions">
+                    <button type="button" class="confirm">Confirm</button>
+                    <button type="button" class="cancel">Cancel</button>
                 </div>
-
             </div>
         </div>
     </div>
     
-
-
     <script src = "app.js"></script>
 </body> 

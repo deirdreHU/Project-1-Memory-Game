@@ -134,14 +134,36 @@ P{
     z-index: 0;
 }
 
-
 .setting-dialog {
     width: 100%;
     position: fixed;
     top: 0;
     z-index: 2;
-    height: 100vh;A
-    justify-content: center;
-    align-items: center;
+    height: 100vh;
+    justify-content:center;
+    align-items:center;
     display:none;
+}
+
+.card-title {
+    margin-bottom: 1.5rem;
+    
+}
+.dialog-actions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    margin-top: 2rem;
+}
+
+.confirm {
+    background-color: #B294C7;
+    border:none;
+    outline:none;
+    margin-left: 1rem;
+}
+
+.cancel {
+    background:none;
+    border:none;
 }
