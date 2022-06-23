@@ -1,6 +1,8 @@
 //start the game,start button
 const startElement = document.querySelector(".start-btn");
+const moveElement = document.querySelector(".moves")
 const timeElement = document.querySelector(".time");
+let moves = 0
 startElement.addEventListener("click", (event) => {
   const clickStart = event.target.parentElement;
   overElement.style.display = "none";
@@ -109,6 +111,8 @@ const cardGenerator = (data) => {
   cardData.forEach((item) => {
     const playCard = document.createElement("div");
     const front = document.createElement("img");
+    front.setAttribute("name", item.id);
+    front.src = item.urls.small;
     const back = document.createElement("div");
     playCard.classList = "playCard";
     front.classList = "front";
@@ -116,14 +120,26 @@ const cardGenerator = (data) => {
     cardsBoard.appendChild(playCard);
     playCard.appendChild(front);
     playCard.appendChild(back);
-    front.src = item.urls.small;
-    front.setAttribute("name", item.id);
+
+
     //add click event
-    playCard.addEventListener("click", (event) => {
-      playCard.classList.add("toggleCard");
-      checkCards(event);
-    });
-  });
+    playCard.addEventListener ("click", (event) => {
+        console.log(playCard.classList)
+        if(JSON.stringify(playCard.classList).indexOf('toggleCard') <= 1){
+            moves ++
+            moveElement.innerHTML = `Moves: ${moves}`
+            if(!goTime){
+                let time = 0
+                goTime = setInterval(()=> {
+                    time ++
+                    timeElement.innerHTML = formatSeconds(time)
+                }, 1000)
+            }
+            playCard.classList.add('toggleCard');
+            checkCards(event);
+        }
+    })
+});
 };
 const checkCards = (event) => {
   const clickedCard = event.target;
