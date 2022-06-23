@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Memory Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="./cardstyle.css" rel="stylesheet" />
+</head>
+
+<body>
+    
+    <hearder id="headerWrapper">
+        <div id = "maintitle">
+            <img src="./backgroundImages/Title.png">
+        </div>
+        <div id = "addOnItems">
+            <button type="button" class="set-btn">
+            <img src="./Icons/Settings.png" class="settings"> 
+            </button>
+            <button type="button" class="music-btn"> 
+                <img src= "./Icons/Music.png" class="music"> 
+            </button>
+        </div>
+
+    </hearder>
+    
+    <section class="wrapper">
+        <div class="tools">
+            <p class="moves">Moves:</p>
+            <p class="time">00:00:00</p>  
+        </div>
+
+        <div class="cards"> </div>
+       
+    </section>
+
+    <div id="overlay" class="showed">
+        <button type="button" class="start-btn"> 
+            <img src="./Icons/Play btn.png" class="start">
+        </button>
+    </div>
+    
+    <div class="setting-dialog">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h5>Settings</h5>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label class="input-group-text">Category</label>
+                    <select class="form-select" id="categoryGroupSelect01">
+                        <option value="people">People</option>
+                        <option value="Nature">Nature</option>
+                        <option value="Animal">Animal</option>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label class="input-group-text">Number of cards</label>
+                    <select class="form-select" id="numOfCardGroupSelect01">
+                        <option value="4">4</option>
+                        <option value="8">8</option>
+                        <option value="16">16</option>
+                    </select>
+                </div>
+
+                <div>
+                    <a href="#" class="btn btn-primary">Confirm</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script src = "app.js"></script>
+</body> 
