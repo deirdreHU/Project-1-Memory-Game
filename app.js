@@ -67,7 +67,8 @@ confirm.addEventListener("click", function () {
   }, 1000);
   //generate images
   getImages();
-  // console.log(cate,num)
+  //clear moves
+  let moves = 0;
 });
 
 //click cancel button,dialog will be closed
@@ -95,12 +96,13 @@ async function getImages() {
 }
 const section = document.querySelector("section");
 const cardsBoard = document.querySelector(".cards");
+
 //Randomize the images
 const randomize = (data) => {
   const cardData = data.concat(data);
   cardData.sort(() => Math.random() - 0.5);
   cardsBoard.innerHTML = "";
-  // console.log(cardData)
+//   console.log(cardData)
   cardGenerator(cardData);
 };
 
@@ -141,27 +143,36 @@ const cardGenerator = (data) => {
     })
 });
 };
-const checkCards = (event) => {
-  const clickedCard = event.target;
-  clickedCard.classList.add("flipped");
-  const flippedCard = document.querySelectorAll(".flipped");
 
-  //verify whether match
-  if (flippedCard.length === 2) {
-    if (
-      flippedCard[0].getAttribute("name") ===
-      flippedCard[1].getAttribute("name")
-    ) {
-      console.log("done");
-    } else {
-      flippedCard.forEach((playCard) => {
-        playCard.classList.remove("flipped");
-        // setTimeout(( )=> card.classList.remove("toggleCard"),1000);
-      });
-      const flippedCard1 = document.querySelectorAll(".toggleCard");
-      flippedCard1.forEach((playCard) => {
-        setTimeout(() => playCard.classList.remove("toggleCard"), 1000);
-      });
+const checkCards = (event) => {
+    const clickedCard = event.target;
+    clickedCard.classList.add("flipped");
+    const flippedCard = document.querySelectorAll(".flipped");
+
+    //verify whether match
+    if(flippedCard.length === 2){
+        if(
+            flippedCard[0].getAttribute("name") === flippedCard[1].getAttribute("name")
+        ) {
+            flippedCard.forEach(item =>{
+                item.classList.remove("flipped")
+            })
+            const flippedCard1 = document.querySelectorAll(".toggleCard");
+            if(flippedCard1.length === Image.length){
+                console.log(Image.length)
+                clearInterval(goTime)
+                overElement.style.display = "shown";
+            }
+        } else {
+            flippedCard.forEach((playCard) => {
+                console.log(playCard.parentElement)
+                setTimeout(( )=> playCard.parentElement.classList.remove("toggleCard"),1000);
+                playCard.classList.remove("flipped");
+            })
+        }
     }
-  }
-};
+}
+
+
+
+
