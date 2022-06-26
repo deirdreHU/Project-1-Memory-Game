@@ -171,7 +171,7 @@ const checkCards = (event) => {
                 overElement.style.display = "flex",
                 2000);
                 clearInterval(goTime);
-                playCard.classList.remove("playcard")
+                // playCard.classList.remove("playcard")
             }
         } else {
             flippedCard.forEach((playCard) => {

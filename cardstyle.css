@@ -16,7 +16,7 @@ body{
    flex-direction: row;
    justify-content:center;
    align-items: flex-start;
-   margin-bottom: 32px;
+   margin-bottom: 1.5rem;
    z-index: 1;
    padding:1rem;
 }
@@ -58,9 +58,8 @@ body{
 }
 
 
-
 .wrapper {
-    margin-top: 32px;
+    margin-top: 1rem;
     background-color:#B294C7;
     background-position: center bottom;
     padding: 16px;
