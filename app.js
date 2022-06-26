@@ -197,30 +197,23 @@ restartElement.addEventListener("click", (event) => {
 });
 
 //music control
-const muteMusic = document.querySelector(".music")
-const playMusic = document.querySelector(".mute")
+const muteMusic = document.querySelector(".play-btn")
+const playMusic = document.querySelector(".mute-btn")
 const music = document.querySelector("#background")
 
 muteMusic.onclick = function(){
-  pauseAudio()
+  music.pause();
   muteMusic.style.display = "none"
   playMusic.style.display = "flex"
 
 }
 
 playMusic.onclick = function (){
-  playAudio()
+  music.play();
   muteMusic.style.display = "flex"
   playMusic.style.display = "none"
 }
 
-function playAudio(){
-  music.play();
-}
-
-function pauseAudio(){
-  music.pause();
-}
 
 
 

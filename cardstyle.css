@@ -1,3 +1,4 @@
+
 body{
     font-family: Roboto,'Open Sans',Arial,sans-serif;
     display:flex;
@@ -26,28 +27,37 @@ body{
 
 #addOnItems{
     margin-left: 2rem;
+    display:flex;
 }
 
-.set-btn, .music-btn{
+.set-btn, .play-btn, .mute-btn {
     background: none;
     border: none;
     outline:none;
-    padding-top:30px;
-    position:relative;
+
 }
 
-.settings, .music, .mute{
+.audio-control {
+    display:flex;
+    height:fit-content;
+    width:fit-content;
+
+}
+
+.play-btn, .mute-btn {
+    position:absolute;
+}
+
+.settings, .play, .mute {
     height:48px;
     width:48px;
 }
 
-.music, .mute {
-    position:absolute;
+.play, .mute {
+    position:relative;
 }
 
-.mute {
-    display:none;
-}
+
 
 .wrapper {
     margin-top: 32px;
@@ -82,7 +92,7 @@ P{
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(4,4rem);
+    grid-template-columns: repeat(6,4rem);
     grid-template-rows: repeat(4,4rem);
     grid-gap: 1rem;
     perspective: 800px;
