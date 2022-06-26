@@ -2,11 +2,13 @@
 const startElement = document.querySelector(".start-btn");
 const moveElement = document.querySelector(".moves")
 const timeElement = document.querySelector(".time");
+
 let moves = 0
 startElement.addEventListener("click", (event) => {
   const clickStart = event.target.parentElement;
   overElement.style.display = "none";
   getImages();
+  moveElement.innerHTML = `Moves: 0`
   let time = 0;
   goTime = setInterval(() => {
     time++;
@@ -45,7 +47,7 @@ const formatSeconds = (s) => {
 
 //click settings button,pop-up will be shown
 const settingsElement = document.querySelector(".set-btn");
-const settings = document.querySelector(".setting-dialog");
+const settings = document.querySelector("#setting-dialog");
 const overElement = document.querySelector("#overlay");
 settingsElement.addEventListener("click", function (event) {
   const clickSettings = event.target.parentElement;
@@ -68,7 +70,7 @@ confirm.addEventListener("click", function () {
   //generate images
   getImages();
   //clear moves
-  let moves = 0;
+  moves = 0;
 });
 
 //click cancel button,dialog will be closed
@@ -89,6 +91,7 @@ async function getImages() {
     .then((data) => {
       randomize(data);
       console.log(data);
+      image = data;
     })
     .catch((error) => {
       console.log(error);
@@ -96,6 +99,7 @@ async function getImages() {
 }
 const section = document.querySelector("section");
 const cardsBoard = document.querySelector(".cards");
+
 
 //Randomize the images
 const randomize = (data) => {
@@ -143,11 +147,12 @@ const cardGenerator = (data) => {
     })
 });
 };
-
+const toggleCard = document.querySelectorAll(".toggleCard");   
 const checkCards = (event) => {
     const clickedCard = event.target;
     clickedCard.classList.add("flipped");
     const flippedCard = document.querySelectorAll(".flipped");
+    const restartBox = document.querySelector("#restart-dialog")
 
     //verify whether match
     if(flippedCard.length === 2){
@@ -157,11 +162,16 @@ const checkCards = (event) => {
             flippedCard.forEach(item =>{
                 item.classList.remove("flipped")
             })
-            const flippedCard1 = document.querySelectorAll(".toggleCard");
-            if(flippedCard1.length === Image.length){
-                console.log(Image.length)
-                clearInterval(goTime)
-                overElement.style.display = "shown";
+            const toggleCard = document.querySelectorAll(".toggleCard");          
+            if(toggleCard.length === image.length * 2){
+                setTimeout(( )=>
+                restartBox.style.display = "flex",
+                2000);
+                setTimeout(( )=> 
+                overElement.style.display = "flex",
+                2000);
+                clearInterval(goTime);
+                playCard.classList.remove("playcard")
             }
         } else {
             flippedCard.forEach((playCard) => {
@@ -171,6 +181,45 @@ const checkCards = (event) => {
             })
         }
     }
+}
+
+const restartElement = document.querySelector(".restart-btn")
+const removeDiaElement = document.querySelector("#restart-dialog")
+
+restartElement.addEventListener("click", (event) => {
+  const flippedCard = document.querySelectorAll(".flipped");
+  flippedCard.forEach((playCard) => {
+  playCard.classList.remove("flipped");
+  })
+  removeDiaElement.style.display = "none";
+  moveElement.innerHTML = `Moves: 0`
+  let time = 0;
+});
+
+//music control
+const muteMusic = document.querySelector(".music")
+const playMusic = document.querySelector(".mute")
+const music = document.querySelector("#background")
+
+muteMusic.onclick = function(){
+  pauseAudio()
+  muteMusic.style.display = "none"
+  playMusic.style.display = "flex"
+
+}
+
+playMusic.onclick = function (){
+  playAudio()
+  muteMusic.style.display = "flex"
+  playMusic.style.display = "none"
+}
+
+function playAudio(){
+  music.play();
+}
+
+function pauseAudio(){
+  music.pause();
 }
 
 

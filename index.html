@@ -22,25 +22,25 @@
             </button>
             <button type="button" class="music-btn"> 
                 <img src= "./Icons/Music.png" class="music"> 
+                <img src="./Icons/Mute.png" class="mute">
             </button>
         </div>
     </hearder>
-    
+
     <section class="wrapper">
         <div class="tools">
             <p class="moves">Moves:</p>
             <p class="time">00:00:00</p>  
         </div>
+        <div id="overlay" class="showed">
+            <button type="button" class="start-btn"> 
+                <img src="./Icons/Play btn.png" class="start">
+            </button>
+        </div>
         <div class="cards"> </div>
     </section>
 
-    <div id="overlay" class="showed">
-        <button type="button" class="start-btn"> 
-            <img src="./Icons/Play btn.png" class="start">
-        </button>
-    </div>
-    
-    <div class="setting-dialog">
+    <div id="setting-dialog">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
@@ -69,6 +69,20 @@
             </div>
         </div>
     </div>
-    
+
+    <div id="restart-dialog">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Congratulations!</h5>
+              <p class="card-text">Just click the button below to restart!</p>
+              <button type="button" class="restart-btn">Restart</button>
+            </div>
+        </div>
+    </div>
+
+    <audio controls autoplay loop id="background">
+        <source src="./background-music.mp3" type="audio/mp3">
+    </audio>
+
     <script src = "app.js"></script>
 </body> 
