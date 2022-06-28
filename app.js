@@ -171,7 +171,10 @@ const checkCards = (event) => {
                 overElement.style.display = "flex",
                 2000);
                 clearInterval(goTime);
-                // playCard.classList.remove("playcard")
+                // const toggleCard = document.querySelectorAll(".toggleCard");
+              //   toggleCard.forEach((playCard) => {
+              //     playCard.classList.remove("toggleCard");
+              // })
             }
         } else {
             flippedCard.forEach((playCard) => {
@@ -187,14 +190,16 @@ const restartElement = document.querySelector(".restart-btn")
 const removeDiaElement = document.querySelector("#restart-dialog")
 
 restartElement.addEventListener("click", (event) => {
-  const flippedCard = document.querySelectorAll(".flipped");
-  flippedCard.forEach((playCard) => {
-  playCard.classList.remove("flipped");
-  })
-  removeDiaElement.style.display = "none";
-  moveElement.innerHTML = `Moves: 0`
-  let time = 0;
+  const toggleCard = document.querySelectorAll(".toggleCard");
+  toggleCard.forEach((playCard) => {
+    playCard.classList.remove("toggleCard");
+})
+removeDiaElement.style.display = "none";
+moveElement.innerHTML = `Moves: 0`
+let time = 0;
+moves = 0
 });
+
 
 //music control
 const muteMusic = document.querySelector(".play-btn")
