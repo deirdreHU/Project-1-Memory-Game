@@ -10,6 +10,7 @@ body{
     height: 100vh;
 }
 
+/* header */
 #headerWrapper {
    margin-inline: 20px;
    display:flex;
@@ -45,11 +46,10 @@ body{
     display:flex;
 }
 
-.set-btn, .play-btn, .mute-btn, .hint-btn{
+.set-btn, .play-btn, .mute-btn, .hint-btn {
     background: none;
     border: none;
     outline:none;
-
 }
 
 .audio-control {
@@ -72,7 +72,7 @@ body{
     position:relative;
 }
 
-
+/* game header */
 .wrapper {
     margin-top: 1rem;
     background-color:#B294C7;
@@ -84,6 +84,7 @@ body{
 .tools {
     position:relative;
     display: flex;
+    width:100%;
     line-height: 40px;
     margin-bottom: 10px;
     background-color: #864EAD;
@@ -103,7 +104,38 @@ P{
     line-height: 40px;
     vertical-align: middle;
 }
+/* 2people mode header */
+#players {
+    position:absolute;
+    display: flex;
+    width: 498px;
+    justify-content: space-between;
+    vertical-align: top;
+    margin-top:-65px;
+    margin-left: -1rem;
+    z-index: 100;
+    display:none;
+    background-color: #B294C7;
+}
 
+.player1, .player2 {
+    display:flex;
+    flex-direction: column;
+    width: 220px;
+    text-align: center;
+    border-radius: 4px 4px 0 0;
+    background-color: #864EAD;
+}
+.activePlayer {
+    background-color:#FF9703;
+}
+
+.player_txt {
+    font-size: 20px;
+    color:white;
+}
+
+/* main card game */
 .cards {
     display: grid;
     grid-template-columns: repeat(6,4rem);
@@ -155,9 +187,9 @@ P{
     justify-content: center;
     align-items: center;   
     z-index: 1;
-    /* display:none; */
 }
 
+/* settings */
 .dialog-card {
     overflow:hidden;
     display:flex;
@@ -208,6 +240,7 @@ P{
     border:none;
 }
 
+/* restart */
 #restart-dialog {
     display:none;
     align-items: center;
@@ -245,6 +278,33 @@ button.restart-btn {
     align-items: center;
 }
 
+/* audio */
 audio {
     display:none;
+}
+
+/* change mode buttons */
+.changemode {
+    display:flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.teamwork-btn, .individual-btn {
+    width:50px;
+    background: none;
+    border: none;
+    outline:none;
+    display:flex;
+    margin-left: auto;
+    z-index: 500;
+    /* position:relative; */
+    margin-top: 1rem;
+    margin-left:inherit;
+}
+
+.teamwork, .individual {
+    width:48px;
+    height:48px;
+    z-index:500;
 }

@@ -1,14 +1,21 @@
 //start the game,start button
 const startElement = document.querySelector(".start-btn");
-const moveElement = document.querySelector(".moves");
+let moveElement = document.querySelector(".moves");
 const timeElement = document.querySelector(".time");
 
-let moves = 0;
+let turn = 0;
+let score = 0;
+let player2score = -1;
 startElement.addEventListener("click", (event) => {
   const clickStart = event.target.parentElement;
   overElement.style.display = "none";
   getImages();
-  moveElement.innerHTML = `Moves: 0`;
+  moveElement.innerHTML = `Score: 0`;
+  score = 0
+  if(player2score >= 0)
+  {
+    player2score = 0;
+  }
   let time = 0;
   goTime = setInterval(() => {
     time++;
@@ -131,8 +138,6 @@ const cardGenerator = (data) => {
     playCard.addEventListener("click", (event) => {
       console.log(playCard.classList);
       if (JSON.stringify(playCard.classList).indexOf("toggleCard") <= 1) {
-        moves++;
-        moveElement.innerHTML = `Moves: ${moves}`;
         if (!goTime) {
           let time = 0;
           goTime = setInterval(() => {
@@ -155,10 +160,12 @@ const checkCards = (event) => {
 
   //verify whether match
   if (flippedCard.length === 2) {
+    let isCorrect = false;
     if (
       flippedCard[0].getAttribute("name") ===
       flippedCard[1].getAttribute("name")
     ) {
+      isCorrect = true;
       flippedCard.forEach((item) => {
         item.classList.remove("flipped");
       });
@@ -178,6 +185,39 @@ const checkCards = (event) => {
         playCard.classList.remove("flipped");
       });
     }
+
+    if(player2score >= 0)
+    {
+      if(!isCorrect)
+      {
+        turn = (turn + 1) % 2;
+      }
+
+      else
+      {
+        moveElement = document.querySelectorAll(".player_moves")[turn];
+        if(turn == 0)
+        {
+          score++;
+          moveElement.innerHTML = `Score: ${score}`
+        }
+
+        else
+        {
+          player2score++;
+          moveElement.innerHTML = `Score: ${player2score}`
+        }
+      }
+    }
+
+    else
+    {
+      if(isCorrect)
+      {
+        score++;
+      }
+      moveElement.innerHTML = `Score: ${score}`
+    }
   }
 };
 
@@ -191,7 +231,7 @@ restartElement.addEventListener("click", (event) => {
     playCard.classList.remove("toggleCard");
   });
   removeDiaElement.style.display = "none";
-  moveElement.innerHTML = `Moves: 0`;
+  moveElement.innerHTML = `Score: 0`;
   // let time = 0;
   // moves = 0;
 });
@@ -200,6 +240,8 @@ restartElement.addEventListener("click", (event) => {
 const muteMusic = document.querySelector(".play-btn");
 const playMusic = document.querySelector(".mute-btn");
 const music = document.querySelector("#background");
+const firstPlayer = document.querySelector(".player1");
+const secondPlayer = document.querySelector(".player2")
 
 muteMusic.onclick = function () {
   music.pause();
@@ -217,8 +259,6 @@ playMusic.onclick = function () {
 //give hints
 
 const hintShown = document.querySelector(".hint-btn");
-
-
 hintShown.addEventListener("click", (event) => {
   //get all the data based on the existing cards
   const playCards = document.querySelectorAll(".playCard");
@@ -241,4 +281,28 @@ hintShown.addEventListener("click", (event) => {
       item.classList.remove("toggleCard");
     });
   }, 3000);
+});
+
+//change mode
+const changeTeamMode = document.querySelector(".teamwork-btn")
+const changeSingleMode = document.querySelector(".individual-btn")
+const moveTools = document.querySelector(".tools")
+const addPlayers = document.querySelector("#players")
+
+changeTeamMode.addEventListener("click",(event) =>{
+  moveTools.style.display = "none";
+  addPlayers.style.display = "flex";
+  overElement.style.display = "flex";
+  moveElement = document.querySelectorAll(".player_moves")[0];
+  const playCards = document.querySelectorAll(".playCard");
+  let clickCount = 0
+  player2score = 0;
+  turn = 0;
+});
+
+changeSingleMode.addEventListener("click",(event) =>{
+  moveTools.style.display = "flex";
+  addPlayers.style.display = "none";
+  overElement.style.display = "flex";
+  player2score = -1;
 });
