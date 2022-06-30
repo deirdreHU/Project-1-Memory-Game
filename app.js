@@ -92,8 +92,7 @@ async function getImages() {
   let cate = document.querySelector("#categoryGroupSelect01").value;
   fetch(
     `https://api.unsplash.com/photos?client_id=WA0EpeaTH9kcq_HhlabuIubCSs6n4v3jvmhedPjk2G0&query=${cate}&per_page=${
-      num / 2
-    }`
+      num / 2}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -156,7 +155,7 @@ const checkCards = (event) => {
   const clickedCard = event.target;
   clickedCard.classList.add("flipped");
   const flippedCard = document.querySelectorAll(".flipped");
-  const restartBox = document.querySelector("#restart-dialog");
+  const restartForSingBox = document.querySelector("#restart-dialog");
 
   //verify whether match
   if (flippedCard.length === 2) {
@@ -166,50 +165,46 @@ const checkCards = (event) => {
       flippedCard[1].getAttribute("name")
     ) {
       isCorrect = true;
-      flippedCard.forEach((item) => {
-        item.classList.remove("flipped");
-      });
-      const toggleCard = document.querySelectorAll(".toggleCard");
-      if (toggleCard.length === image.length * 2) {
-        setTimeout(() => (restartBox.style.display = "flex"), 2000);
-        setTimeout(() => (overElement.style.display = "flex"), 2000);
-        clearInterval(goTime);
-      }
+        flippedCard.forEach((item) => {
+          item.classList.remove("flipped");
+        });
+        const toggleCard = document.querySelectorAll(".toggleCard");
+          if (toggleCard.length === image.length * 2) {
+            setTimeout(() => (restartForSingBox.style.display = "flex"), 2000);
+            setTimeout(() => (overElement.style.display = "flex"), 2000);
+            clearInterval(goTime);
+          }
     } else {
-      flippedCard.forEach((playCard) => {
-        console.log(playCard.parentElement);
-        setTimeout(
-          () => playCard.parentElement.classList.remove("toggleCard"),
-          1000
-        );
-        playCard.classList.remove("flipped");
-      });
+        flippedCard.forEach((playCard) => {
+          console.log(playCard.parentElement);
+          setTimeout(
+            () => playCard.parentElement.classList.remove("toggleCard"),
+            1000
+          );
+          playCard.classList.remove("flipped");
+        });
     }
-
-    if(player2score >= 0)
-    {
-      if(!isCorrect)
-      {
-        turn = (turn + 1) % 2;
-      }
-
-      else
-      {
+    //change to 2 players mode
+    if(player2score >= 0) {
+      if(isCorrect) {
         moveElement = document.querySelectorAll(".player_moves")[turn];
-        if(turn == 0)
-        {
+        if(turn == 0) {
           score++;
           moveElement.innerHTML = `Score: ${score}`
-        }
-
-        else
-        {
+        } else {
           player2score++;
           moveElement.innerHTML = `Score: ${player2score}`
         }
       }
+      console.log(turn)
+      setTimeout(()=>{
+        let playerActive = document.querySelectorAll(".player_moves")[turn].parentElement;
+        playerActive.style.backgroundColor = '#864EAD'
+        turn = (turn + 1) % 2;
+        playerActive = document.querySelectorAll(".player_moves")[turn].parentElement;
+        playerActive.style.backgroundColor = '#FF9703'
+      },2000)
     }
-
     else
     {
       if(isCorrect)
@@ -225,16 +220,14 @@ const checkCards = (event) => {
 const restartElement = document.querySelector(".restart-btn");
 const removeDiaElement = document.querySelector("#restart-dialog");
 const toggleElement = document.querySelectorAll(".toggleCard");
-
 restartElement.addEventListener("click", (event) => {
   toggleElement.forEach((playCard) => {
     playCard.classList.remove("toggleCard");
   });
   removeDiaElement.style.display = "none";
   moveElement.innerHTML = `Score: 0`;
-  // let time = 0;
-  // moves = 0;
 });
+
 
 //music control
 const muteMusic = document.querySelector(".play-btn");
@@ -257,7 +250,6 @@ playMusic.onclick = function () {
 
 
 //give hints
-
 const hintShown = document.querySelector(".hint-btn");
 hintShown.addEventListener("click", (event) => {
   //get all the data based on the existing cards
@@ -294,7 +286,9 @@ changeTeamMode.addEventListener("click",(event) =>{
   addPlayers.style.display = "flex";
   overElement.style.display = "flex";
   moveElement = document.querySelectorAll(".player_moves")[0];
+  moveElement.parentElement.style.backgroundColor = '#FF9703'
   const playCards = document.querySelectorAll(".playCard");
+  clearInterval(goTime);
   let clickCount = 0
   player2score = 0;
   turn = 0;
@@ -304,5 +298,7 @@ changeSingleMode.addEventListener("click",(event) =>{
   moveTools.style.display = "flex";
   addPlayers.style.display = "none";
   overElement.style.display = "flex";
+  clearInterval(goTime);
   player2score = -1;
 });
+

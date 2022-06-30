@@ -126,9 +126,6 @@ P{
     border-radius: 4px 4px 0 0;
     background-color: #864EAD;
 }
-.activePlayer {
-    background-color:#FF9703;
-}
 
 .player_txt {
     font-size: 20px;
@@ -204,7 +201,7 @@ P{
     width: 100%;
     position: fixed;
     top: 0;
-    z-index: 2;
+    z-index: 500;
     height: 100vh;
     justify-content:center;
     align-items:center;
