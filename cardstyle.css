@@ -106,15 +106,10 @@ P{
 }
 /* 2people mode header */
 #players {
-    position:absolute;
-    display: flex;
-    width: 498px;
-    justify-content: space-between;
-    vertical-align: top;
-    margin-top:-65px;
-    margin-left: -1rem;
+    padding: 16px;
+    width: 100%;
     z-index: 100;
-    display:none;
+    display: none;
     background-color: #B294C7;
 }
 
@@ -295,7 +290,6 @@ audio {
     display:flex;
     margin-left: auto;
     z-index: 500;
-    /* position:relative; */
     margin-top: 1rem;
     margin-left:inherit;
 }
