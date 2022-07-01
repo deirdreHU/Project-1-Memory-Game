@@ -74,6 +74,7 @@ changeSingleMode.addEventListener("click", (event) => {
   clearInterval(goTime);
   player2score = -1;
   score = 0;
+  timeElement.innerHTML = "00:00:00"
 });
 
 //click settings button,pop-up will be shown
@@ -94,6 +95,7 @@ confirm.addEventListener("click", function () {
   moveElement.innerHTML = `Moves: 0`;
   //clear timer
   clearInterval(goTime);
+  timeElement.innerHTML = "00:00:00"
   getImages();
 });
 
@@ -238,6 +240,8 @@ restartElement.addEventListener("click", (event) => {
   });
   removeDiaElement.style.display = "none";
   moveElement.innerHTML = `Score: 0`;
+  timeElement.innerHTML = "00:00:00";
+  clearInterval(goTime);
 });
 
 //music control
