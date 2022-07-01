@@ -7,6 +7,8 @@ Each turn, you can only turn over 2 cards.
 ## Link to play:
 https://deirdrehu.github.io/
 
+## Wireframe:
+https://xd.adobe.com/view/7c6ff286-3aad-4857-a788-81a0d9c9e499-293c/
 
 <br>
 
@@ -24,6 +26,7 @@ https://deirdrehu.github.io/
 - Add a timer to record the duration of the game time
 - CSS to make the UI properly
 - Use Javascript for DOM manipulation
+
 
 <br>
 
