@@ -2,25 +2,26 @@
 const startElement = document.querySelector(".start-btn");
 let moveElement = document.querySelector(".moves");
 const timeElement = document.querySelector(".time");
-  let turn = 0;
-  let score = 0;
-  let player2score = -1;
-  startElement.addEventListener("click", (event) => {
-    const clickStart = event.target.parentElement;
-    overElement.style.display = "none";
-    getImages();
-    moveElement.innerHTML = `Score: 0`;
-    score = 0;
-    if (player2score >= 0) {
-      player2score = 0;
-    }
-    let time = 0;
-    goTime = setInterval(() => {
-      time++;
-      timeElement.innerHTML = formatSeconds(time);
-    }, 1000);
-    return;
-  });
+let turn = 0;
+let score = 0;
+let player2score = -1;
+startElement.addEventListener("click", (event) => {
+  const clickStart = event.target.parentElement;
+  overElement.style.display = "none";
+  getImages();
+  moveElement.innerHTML = `Score: 0`;
+  score = 0;
+  if (player2score >= 0) {
+    player2score = 0;
+  }
+  let time = 0;
+  goTime = setInterval(() => {
+    time++;
+    timeElement.innerHTML = formatSeconds(time);
+  }, 1000);
+  return;
+});
+
 //timer function (tools)
 let goTime = "";
 const formatSeconds = (s) => {
@@ -54,26 +55,26 @@ const changeTeamMode = document.querySelector(".teamwork-btn");
 const changeSingleMode = document.querySelector(".individual-btn");
 const moveTools = document.querySelector(".tools");
 const addPlayers = document.querySelector("#players");
-  changeTeamMode.addEventListener("click", (event) => {
-    moveTools.style.display = "none";
-    addPlayers.style.display = "flex";
-    overElement.style.display = "flex";
-    moveElement = document.querySelectorAll(".player_moves")[0];
-    moveElement.parentElement.style.backgroundColor = "#FF9703";
-    const playCards = document.querySelectorAll(".playCard");
-    clearInterval(goTime);
-    let clickCount = 0;
-    player2score = 0;
-    turn = 0;
-  });
-
-  changeSingleMode.addEventListener("click", (event) => {
-    moveTools.style.display = "flex";
-    addPlayers.style.display = "none";
-    overElement.style.display = "flex";
-    clearInterval(goTime);
-    player2score = -1;
-  });
+changeTeamMode.addEventListener("click", (event) => {
+  moveTools.style.display = "none";
+  addPlayers.style.display = "flex";
+  overElement.style.display = "flex";
+  moveElement = document.querySelectorAll(".player_moves")[0];
+  moveElement.parentElement.style.backgroundColor = "#FF9703";
+  clearInterval(goTime);
+  let clickCount = 0;
+  player2score = 0;
+  turn = 0;
+  score = 0;
+});
+changeSingleMode.addEventListener("click", (event) => {
+  moveTools.style.display = "flex";
+  addPlayers.style.display = "none";
+  overElement.style.display = "flex";
+  clearInterval(goTime);
+  player2score = -1;
+  score = 0;
+});
 
 //click settings button,pop-up will be shown
 const settingsElement = document.querySelector(".set-btn");
@@ -89,18 +90,13 @@ const confirm = document.querySelector(".confirm");
 confirm.addEventListener("click", function () {
   overElement.style.display = "flex";
   settings.style.display = "none";
-  // //clear moves
+  // clear moves
   moveElement.innerHTML = `Moves: 0`;
-  //restart timer
-  let time = 0;
+  //clear timer
   clearInterval(goTime);
-  goTime = setInterval(() => {
-    time++;
-    timeElement.innerHTML = formatSeconds(time);
-  }, 1000);
-  //generate images
   getImages();
 });
+
 //click cancel button,dialog will be closed
 const cancel = document.querySelector(".cancel");
 cancel.addEventListener("click", function () {
@@ -188,6 +184,7 @@ const checkCards = (event) => {
       flippedCard.forEach((item) => {
         item.classList.remove("flipped");
       });
+
         const toggleCard = document.querySelectorAll(".toggleCard");
         if (toggleCard.length === image.length * 2) {
           setTimeout(() => (restartForSingBox.style.display = "flex"), 2000);
@@ -195,7 +192,7 @@ const checkCards = (event) => {
           clearInterval(goTime);
         }
       } else {
-        flippedCard.forEach((playCard) => {
+          flippedCard.forEach((playCard) => {
           console.log(playCard.parentElement);
           setTimeout(() => playCard.parentElement.classList.remove("toggleCard"),1000);
           playCard.classList.remove("flipped");
@@ -225,6 +222,7 @@ const checkCards = (event) => {
       if (isCorrect) {
         score++;
       }
+      moveElement = document.querySelector(".moves");
       moveElement.innerHTML = `Score: ${score}`;
     }
   }
@@ -248,7 +246,6 @@ const playMusic = document.querySelector(".mute-btn");
 const music = document.querySelector("#background");
 const firstPlayer = document.querySelector(".player1");
 const secondPlayer = document.querySelector(".player2");
-
 muteMusic.onclick = function () {
   music.pause();
   muteMusic.style.display = "none";
@@ -283,7 +280,7 @@ hintShown.addEventListener("click", (event) => {
     toFlip.forEach((item) => {
       item.classList.remove("toggleCard");
     });
-  }, 3000);
+  }, 2500);
 });
 
 
