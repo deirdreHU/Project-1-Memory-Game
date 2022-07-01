@@ -249,8 +249,7 @@ restartElement.addEventListener("click", (event) => {
 const muteMusic = document.querySelector(".play-btn");
 const playMusic = document.querySelector(".mute-btn");
 const music = document.querySelector("#background");
-const firstPlayer = document.querySelector(".player1");
-const secondPlayer = document.querySelector(".player2");
+
 muteMusic.onclick = function () {
   music.pause();
   muteMusic.style.display = "none";
