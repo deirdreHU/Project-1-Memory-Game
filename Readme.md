@@ -15,6 +15,7 @@ https://deirdrehu.github.io/
 - CSS
 - Javascript
 - Bootstrap
+- Material Design 
 
 <br>
 

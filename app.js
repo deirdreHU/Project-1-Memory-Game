@@ -239,6 +239,7 @@ restartElement.addEventListener("click", (event) => {
     playCard.classList.remove("toggleCard");
   });
   removeDiaElement.style.display = "none";
+
   moveElement.innerHTML = `Score: 0`;
   timeElement.innerHTML = "00:00:00";
   clearInterval(goTime);
