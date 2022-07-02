@@ -25,7 +25,7 @@ https://xd.adobe.com/view/7c6ff286-3aad-4857-a788-81a0d9c9e499-293c/
 - Fetch Unsplash API to randomize the images used for the card
 - Add a timer to record the duration of the game time
 - CSS to make the UI properly
-- Use Javascript for DOM manipulation
+- DOM manipulation
 
 
 <br>
