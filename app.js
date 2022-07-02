@@ -5,6 +5,7 @@ const timeElement = document.querySelector(".time");
 let turn = 0;
 let score = 0;
 let player2score = -1;
+
 startElement.addEventListener("click", (event) => {
   const clickStart = event.target.parentElement;
   overElement.style.display = "none";
@@ -24,6 +25,7 @@ startElement.addEventListener("click", (event) => {
 
 //timer function (tools)
 let goTime = "";
+
 const formatSeconds = (s) => {
   let t = "";
   if (s > -1) {
@@ -77,6 +79,7 @@ changeSingleMode.addEventListener("click", (event) => {
   timeElement.innerHTML = "00:00:00"
 });
 
+
 //click settings button,pop-up will be shown
 const settingsElement = document.querySelector(".set-btn");
 const settings = document.querySelector("#setting-dialog");
@@ -86,6 +89,7 @@ settingsElement.addEventListener("click", function (event) {
   settings.style.display = "flex";
   console.log(clickSettings);
 });
+
 //click confirm button, dialog will disapper
 const confirm = document.querySelector(".confirm");
 confirm.addEventListener("click", function () {
@@ -104,6 +108,7 @@ const cancel = document.querySelector(".cancel");
 cancel.addEventListener("click", function () {
   settings.style.display = "none";
 });
+
 
 // generate the images
 async function getImages() {
@@ -126,6 +131,7 @@ async function getImages() {
 }
 const section = document.querySelector("section");
 const cardsBoard = document.querySelector(".cards");
+
 //Randomize the images
   const randomize = (data) => {
     const cardData = data.concat(data);
@@ -230,6 +236,7 @@ const checkCards = (event) => {
   }
 };
 
+
 //restart the game when all cards are toggled
 const restartElement = document.querySelector(".restart-btn");
 const removeDiaElement = document.querySelector("#restart-dialog");
@@ -244,6 +251,7 @@ restartElement.addEventListener("click", (event) => {
   timeElement.innerHTML = "00:00:00";
   clearInterval(goTime);
 });
+
 
 //music control
 const muteMusic = document.querySelector(".play-btn");
@@ -261,6 +269,7 @@ playMusic.onclick = function () {
   muteMusic.style.display = "flex";
   playMusic.style.display = "none";
 };
+
 
 //give hints
 const hintShown = document.querySelector(".hint-btn");

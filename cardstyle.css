@@ -148,6 +148,12 @@ P{
     width: 100%;
     height: 100%;
     position: absolute;
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .back {
@@ -172,7 +178,7 @@ P{
     background-color: rgba(180,180,180,0.5);
 }
 
- .start-btn {
+.start-btn {
     background: none;
     border: none;
     outline:none;
